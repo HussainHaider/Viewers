@@ -127,7 +127,7 @@ export default function ModeRoute({
   // The URL's query search parameters where the keys are all lower case.
   const lowerCaseSearchParams = useSearchParams({ lowerCaseKeys: true });
 
-  const [studyInstanceUIDs, setStudyInstanceUIDs] = useState();
+  const [studyInstanceUIDs, setStudyInstanceUIDs] = useState(['2.16.840.1.114362.1.11972228.22789312658.616067305.306.2',]);
 
   const [refresh, setRefresh] = useState(false);
   const [ExtensionDependenciesLoaded, setExtensionDependenciesLoaded] = useState(false);
@@ -249,7 +249,7 @@ export default function ModeRoute({
         params,
         query,
       });
-      setStudyInstanceUIDs(dataSource.getStudyInstanceUIDs({ params, query }));
+      // setStudyInstanceUIDs(dataSource.getStudyInstanceUIDs({ params, query }));
     };
 
     initializeDataSource(params, query);

@@ -56,25 +56,6 @@
   "modes": [
     {
       "packageName": "@ohif/mode-longitudinal"
-    },
-    {
-      "packageName": "@ohif/mode-segmentation"
-    },
-    {
-      "packageName": "@ohif/mode-tmtv"
-    },
-    {
-      "packageName": "@ohif/mode-microscopy"
-    },
-    {
-      "packageName": "@ohif/mode-test",
-      "default": false,
-      "version": "3.0.0"
-    },
-    {
-      "packageName": "@ohif/mode-basic-dev-mode",
-      "default": false,
-      "version": "3.0.0"
     }
   ],
   "public": [

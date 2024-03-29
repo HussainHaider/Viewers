@@ -21,6 +21,7 @@ import {
 // TODO: Should this influence study list?
 import { AppConfigProvider } from '@state';
 import createRoutes from './routes';
+import ModeRoute from './routes/Mode';
 import appInit from './appInit.js';
 import OpenIdConnectRoutes from './utils/OpenIdConnectRoutes';
 
@@ -84,32 +85,40 @@ function App({ config, defaultExtensions, defaultModes }) {
   customizationService.init(extensionManager);
 
   // Use config to create routes
-  const appRoutes = createRoutes({
-    modes,
-    dataSources,
-    extensionManager,
-    servicesManager,
-    commandsManager,
-    hotkeysManager,
-    routerBasename,
-    showStudyList,
-  });
+  // const appRoutes = createRoutes({
+  //   modes,
+  //   dataSources,
+  //   extensionManager,
+  //   servicesManager,
+  //   commandsManager,
+  //   hotkeysManager,
+  //   routerBasename,
+  //   showStudyList,
+  // });
 
-  if (oidc) {
-    authRoutes = (
-      <OpenIdConnectRoutes
-        oidc={oidc}
-        routerBasename={routerBasename}
-        userAuthenticationService={userAuthenticationService}
-      />
-    );
-  }
+  // if (oidc) {
+  //   authRoutes = (
+  //     <OpenIdConnectRoutes
+  //       oidc={oidc}
+  //       routerBasename={routerBasename}
+  //       userAuthenticationService={userAuthenticationService}
+  //     />
+  //   );
+  // }
 
   return (
     <CombinedProviders>
       <BrowserRouter basename={routerBasename}>
-        {authRoutes}
-        {appRoutes}
+          {modes.map(mode => (
+          <ModeRoute
+            key={mode.id}
+            mode={mode}
+            extensionManager={extensionManager}
+            servicesManager={servicesManager}
+            commandsManager={commandsManager}
+            hotkeysManager={hotkeysManager}
+          />
+        ))}
       </BrowserRouter>
     </CombinedProviders>
   );
